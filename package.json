@@ -1,0 +1,10 @@
+{
+  "name": "next-react-typescript-mfe",
+  "version": "0.1.0",
+  "description": "Micro Frontend with Next.js HOST and React REMOTE",
+  "author": "Patrick Coutinho",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.2.1"
+  }
+}
