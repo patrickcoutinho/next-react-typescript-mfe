@@ -4,14 +4,16 @@
   "description": "Micro Frontend with Next.js HOST and React REMOTE",
   "author": "Patrick Coutinho",
   "license": "ISC",
-  "workspaces": ["host"],
+  "workspaces": [
+    "host",
+    "remote"
+  ],
   "private": true,
   "scripts": {
-    "dev": "yarn workspace host dev"
+    "start": "concurrently \"yarn workspace host dev\" \"yarn workspace remote start\""
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
-    "@types/react": "^18.0.9",
     "concurrently": "^7.2.1",
     "typescript": "^4.7.2"
   }
