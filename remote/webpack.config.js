@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 
 module.exports = {
   entry: "./src/index",
@@ -29,6 +31,19 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new ModuleFederationPlugin({
+      name: "remote",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Button": "./src/components/Button",
+      },
+      shared: {
+        react: {
+          requiredVersion: false,
+          singleton: true,
+        },
+      },
     }),
   ],
 };
