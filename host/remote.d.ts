@@ -6,8 +6,14 @@ declare module "remote/Button" {
   export default Button;
 }
 
-declare module "remote/useNothing" {
-  const useNothing: function;
+declare module "remote/Header" {
+  const Header: React.ComponentType;
 
-  export default useNothing;
+  export default Header;
+}
+
+declare module "remote/Page" {
+  const Page: React.ComponentType;
+
+  export default Page;
 }
