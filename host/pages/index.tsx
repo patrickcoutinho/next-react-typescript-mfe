@@ -1,9 +1,14 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
+import Router from "next/router";
 import styles from "../styles/Home.module.css";
 
-const RemoteButton = dynamic(() => import("remote/Button"), {
+const RemoteButton: any = dynamic(() => import("remote/Button"), {
+  ssr: false,
+});
+
+const RemoteHeader: any = dynamic(() => import("remote/Header"), {
   ssr: false,
 });
 
@@ -16,11 +21,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <RemoteHeader
+        onLogin={() => {}}
+        onLogout={() => {}}
+        onCreateAccount={() => {}}
+        onGoHome={() => Router.push("/")}
+      />
+
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <RemoteButton />
+        <RemoteButton label="Federated Button" />
+        <RemoteButton
+          label="Go to federated page"
+          primary={true}
+          onClick={() => Router.push("/federated-page")}
+        />
         <p className={styles.description}>
           Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
